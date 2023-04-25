@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { createUserWithEmailAndPassword , updateProfile} from "firebase/auth";
 import { auth , storage} from '../firebase';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { doc, setDoc } from "firebase/firestore"; 
+import { collection, doc, query, setDoc, where , getDocs} from "firebase/firestore"; 
 import { db } from '../firebase';
 import { useNavigate , Link} from 'react-router-dom';
 import DefaultProfile from "../images/default_pfp.jpg";
@@ -22,6 +22,20 @@ export default function Register() {
     const email = e.target[1].value;
     const password = e.target[2].value;
     const file = e.target[3].files[0];
+
+    try{
+      const q = query(collection(db,"users"),where("displayName" ,"==" ,displayName));
+
+      const querySnapshot = await getDocs(q);
+      if(querySnapshot.size != 0){
+        setLoading(false);
+        setErr("This Username is already taken.")
+        return;
+      }
+
+    }catch(err){
+       setErr("Something went wrong!!");
+    }
 
     if(password.length < 6){
       setLoading(false);
