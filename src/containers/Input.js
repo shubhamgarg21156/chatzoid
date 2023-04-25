@@ -80,7 +80,7 @@ export const Input = () => {
       <input type="text" placeholder='Type Something...' value = {msg} onChange={e=>setMsg(e.target.value)} onKeyDown={handleEnter}></input>
       <div className='send'>
           <AttachFileOutlinedIcon />
-          <input type = "file" id = "file" style={{display:"none"}} onChange={e=>setImg(e.target.files[0])}/>
+          <input type = "file" id = "file" accept=".jpg, .jpeg, .png" style={{display:"none"}} onChange={e=>setImg(e.target.files[0])}/>
           <label htmlFor='file'>  <ImageOutlinedIcon /></label>
           <button onClick={handleSend}>Send</button>
       </div>
