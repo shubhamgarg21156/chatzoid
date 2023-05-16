@@ -1,4 +1,6 @@
-import { createContext , useContext, useReducer } from "react";
+import { createContext , useReducer } from "react";
+
+//Class to toggle chat screen in mobile
 
 export const ToggleClassContext = createContext();
 

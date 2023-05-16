@@ -21,7 +21,7 @@ export const Search = () => {
       try{
         const querySnapshot = await getDocs(q);
 
-        if(querySnapshot.size == 0)setErr(true);
+        if(querySnapshot.size === 0)setErr(true);
         querySnapshot.forEach((doc) => {
             setUser(doc.data());
         });
@@ -71,7 +71,7 @@ export const Search = () => {
         }
     }catch(err){
       setErr(err);
-      console.log(err);
+      // console.log(err);
     }
 
     dispatch({type:"CHANGE_USER",payload:user})
@@ -87,7 +87,7 @@ export const Search = () => {
         </div>
         {err && <span className='error-message'>User not Found!!</span>}
         {user && <div className="user-chat" onClick={handleSelect}>
-            <img src={user.photoURL}></img>
+            <img src={user.photoURL} alt="user"></img>
             <div className="user-chat-info"> 
                 <span>{user.displayName}</span>
             </div>

@@ -42,12 +42,12 @@ export const Message = ({message}) => {
   return (
     <div ref = {ref} className={`message ${currentUser.uid === message.senderId && "owner"}`}>
       <div className='message-info'>
-          <img src={currentUser.uid === message.senderId ? currentUser.photoURL : data.user.photoURL}/>
+          <img src={currentUser.uid === message.senderId ? currentUser.photoURL : data.user.photoURL} alt="user pic"/>
           <span>{getTimestamp()}</span>
       </div>
       <div className='message-content'>
         {message.text !== "" && <p>{message.text}</p>}
-        {message.img && <img src={message.img}/>
+        {message.img && <img src={message.img} alt="message img"/>
         }
       </div>
     </div>

@@ -27,7 +27,7 @@ export default function Register() {
       const q = query(collection(db,"users"),where("displayName" ,"==" ,displayName));
 
       const querySnapshot = await getDocs(q);
-      if(querySnapshot.size != 0){
+      if(querySnapshot.size !== 0){
         setLoading(false);
         setErr("This Username is already taken.")
         return;
@@ -112,7 +112,7 @@ export default function Register() {
                 <input type="password" placeholder='password' autoComplete="new-password" required></input>
                 <input type="file" id="file" style={ {display:"none"} } onChange={handleFileUpload}></input>
                 <div className="avatar"> 
-                  <img src={pfp ? pfp : DefaultProfile}></img>
+                  <img src={pfp ? pfp : DefaultProfile} alt="Profile Pic"></img>
                   <label htmlFor='file'>
                       <span>Add an Avatar</span>
                   </label>
